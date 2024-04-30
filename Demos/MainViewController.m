@@ -29,10 +29,10 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return [[self datasource] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellId = @"cellId";
@@ -40,17 +40,15 @@
     if(!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellId];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"cell %ld", indexPath.row];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"cell %ld", indexPath.row];
+    NSDictionary *dict = self.datasource[indexPath.row];
+    cell.textLabel.text = dict[@"title"];
+    cell.detailTextLabel.text = dict[@"subtitle"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
-
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return [NSString stringWithFormat:@"Section %ld", section];
 }
-
-// 动画效果, 选中时缩放
 - (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
@@ -62,10 +60,12 @@
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    rto_dsp(@"d://push/xx", nil);
+    NSString *class = self.datasource[indexPath.row][@"class"];
+    if(class) {
+        rto_dsp([NSString stringWithFormat:@"d://push/%@", class], nil);
+    }
 }
-
-- tableView {
+- (UITableView *)tableView {
     if(!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         _tableView.delegate = self;
@@ -73,6 +73,12 @@
         [self.view addSubview:_tableView];
     }
     return _tableView;
+}
+
+- (NSArray *)datasource {
+    return @[
+        @{@"title":@"WCDB", @"class":@"WCDBHome", @"subtitle":@"腾讯的sqlite，效率比FMDB高"}
+    ];
 }
 
 @end
