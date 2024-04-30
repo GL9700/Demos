@@ -11,6 +11,5 @@
 @interface RowsViewController : UIViewController
 @property (nonatomic) void(^onHandleConfirm)(BookModel *model);
 @property (nonatomic) void(^onHandleCancel)(void);
-@property (nonatomic) BOOL isEdit;
 @property (nonatomic) NSArray *datasource;
 @end

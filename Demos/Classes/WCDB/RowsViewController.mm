@@ -7,57 +7,46 @@
 
 #import "RowsViewController.h"
 
-@interface RowsViewController ()
-@property (nonatomic) UIScrollView *scroller;
-@property (nonatomic) UIView *contentView;
+@interface RowsViewController () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (nonatomic) UICollectionView *collectionView;
 @end
 
 @implementation RowsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.scroller mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    
-    self.contentView = [UIView new];
-    [self.scroller addSubview:self.contentView];
-    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.scroller);
-        make.height.equalTo(self.scroller);
-    }];
- 
-    if (self.datasource.count==0) {
-        self.isEdit = true;
-        self.datasource = @[[self createModelViewWithModel:nil]];
-    }
 }
 
-- (UIView *)createModelViewWithModel:(BookModel *)model {
-    UIView *boxView = [[UIView alloc] init];
-    boxView.backgroundColor = [UIColor whiteColor];
-    boxView.layer.cornerRadius = 5;
-    boxView.layer.shadowColor = [UIColor blackColor].CGColor;
-    boxView.layer.shadowOffset = CGSizeMake(0, 0);
-    boxView.layer.shadowOpacity = 0.5;
-    boxView.layer.shadowRadius = 5;
-    [self.contentView addSubview:boxView];
-    return boxView;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.datasource.count;
 }
 
-- (NSArray *)datasource {
-    if(!_datasource) {
-        _datasource = [NSArray array];
-    }
-    return _datasource;
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.layer.cornerRadius = 10;
+    cell.layer.masksToBounds = YES;
+    return cell;
 }
 
-- (UIScrollView *)scroller {
-    if (!_scroller) {
-        _scroller = [[UIScrollView alloc] initWithFrame:self.view.bounds];
-        _scroller.pagingEnabled = YES;
-        [self.view addSubview:_scroller];
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.view.bounds.size.width-20, self.view.bounds.size.height-20);
+}
+
+- (UICollectionView *)collectionView {
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.minimumLineSpacing = 10;
+        layout.minimumInteritemSpacing = 10;
+        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+        _collectionView.pagingEnabled = YES;
+        _collectionView.backgroundColor = [UIColor whiteColor];
+        _collectionView.dataSource = self;
+        _collectionView.delegate = self;
+        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        [self.view addSubview:_collectionView];
     }
-    return _scroller;
+    return _collectionView;
 }
 @end

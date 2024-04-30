@@ -11,13 +11,15 @@ target 'Demos' do
   pod 'MJRefresh'
   pod 'SDWebImage'
   pod 'YYModel'
+  pod 'lottie-ios', '2.5.3'
+  pod 'LookinServer', :configurations => ['Debug']
 
   pod 'GLNetworking'
   pod 'GLFrameRate'
   pod 'GLExtensions'
   
   pod 'WCDB'
-
+  
   # Pods for FLIOCenter
 
 end
