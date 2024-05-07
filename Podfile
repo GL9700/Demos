@@ -17,9 +17,7 @@ target 'Demos' do
   pod 'GLNetworking'
   pod 'GLFrameRate'
   pod 'GLExtensions'
-  
-  pod 'WCDB'
-  
+    
   # Pods for FLIOCenter
 
 end

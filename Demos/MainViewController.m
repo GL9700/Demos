@@ -77,7 +77,7 @@
 
 - (NSArray *)datasource {
     return @[
-        @{@"title":@"WCDB", @"class":@"WCDBHome", @"subtitle":@"腾讯的sqlite，效率比FMDB高"}
+        @{@"title":@"None", @"class":@"None", @"subtitle":@"详细介绍"}
     ];
 }
 
