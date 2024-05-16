@@ -61,7 +61,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *class = self.datasource[indexPath.row][@"class"];
-    if(class) {
+    void(^blk)(void) = self.datasource[indexPath.row][@"block"];
+    if(blk) {
+        blk();
+    }
+    else if(class) {
         rto_dsp([NSString stringWithFormat:@"d://push/%@", class], nil);
     }
 }
@@ -77,7 +81,14 @@
 
 - (NSArray *)datasource {
     return @[
-        @{@"title":@"None", @"class":@"None", @"subtitle":@"详细介绍"}
+        @{
+            @"title":@"WebView",
+            @"class":@"WebViewController",
+            @"subtitle":@"有进度的网页ViewController",
+            @"block":^(void){
+                rto_dsp(@"d://push/WebViewController?a=1&url=https://cn.vuejs.org", nil);
+            }
+        }
     ];
 }
 

@@ -12,6 +12,7 @@
 		218CB6212BE094830024B9FD /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 218CB6202BE094830024B9FD /* Base */; };
 		218CB6242BE094830024B9FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CB6232BE094830024B9FD /* main.m */; };
 		218CB62C2BE094A80024B9FD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218CB62B2BE094A80024B9FD /* MainViewController.m */; };
+		21AA740A2BF61DCB0064273A /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21AA74092BF61DCB0064273A /* WebViewController.m */; };
 		31D61D1FDB0115D257B0D961 /* Pods_Demos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658E335B4C5AE85104117AE9 /* Pods_Demos.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,8 @@
 		218CB62A2BE094A80024B9FD /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		218CB62B2BE094A80024B9FD /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		218CB62E2BE0A05C0024B9FD /* Common.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.pch; sourceTree = "<group>"; };
+		21AA74082BF61DCB0064273A /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		21AA74092BF61DCB0064273A /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		658E335B4C5AE85104117AE9 /* Pods_Demos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Demos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D176C997975727FD8E3389F4 /* Pods-Demos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demos.debug.xcconfig"; path = "Target Support Files/Pods-Demos/Pods-Demos.debug.xcconfig"; sourceTree = "<group>"; };
 		FA3B97EF283A3E4EF392623E /* Pods-Demos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demos.release.xcconfig"; path = "Target Support Files/Pods-Demos/Pods-Demos.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 		218CB62D2BE09FA60024B9FD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				21AA74082BF61DCB0064273A /* WebViewController.h */,
+				21AA74092BF61DCB0064273A /* WebViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				218CB6132BE094830024B9FD /* AppDelegate.m in Sources */,
 				218CB62C2BE094A80024B9FD /* MainViewController.m in Sources */,
 				218CB6242BE094830024B9FD /* main.m in Sources */,
+				21AA740A2BF61DCB0064273A /* WebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +378,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,7 +414,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
