@@ -15,7 +15,7 @@ target 'Demos' do
   pod 'GLRouter'
   pod 'GLNetworking'
   pod 'GLFrameRate'
-  pod 'GLExtensions', :path => '/Users/liguoliang/Desktop/OpenSource/GLExtensions'
+  pod 'GLExtensions', :git=>'https://github.com/GL9700/GLExtensions.git', :commit=>'77c15f1'
   pod 'LookinServer', :configurations => ['Debug']
   pod 'WCDB'
   pod 'FMDB'
