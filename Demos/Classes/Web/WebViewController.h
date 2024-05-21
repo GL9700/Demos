@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WebViewController : UIViewController
+@interface WebViewController : BaseViewController
 
 @end
 

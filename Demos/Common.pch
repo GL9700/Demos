@@ -15,3 +15,7 @@
 #import <GLRouter.h>
 #import <UIApplication+GLExtension.h>
 #import <UIViewController+GLExtension.h>
+#import <NSObject+GLExtension.h>
+#import <NSString+GLExtension.h>
+
+#import "BaseViewController.h"

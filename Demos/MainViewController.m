@@ -16,16 +16,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"MainViewController";
-    self.navigationController.navigationBar.prefersLargeTitles = YES;
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     [GLRouterManager failure:^(NSError *error, NSString *detail) {
         showToastMsg(@"[GLRouter Error]: %@, detail: %@", error, detail);
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.prefersLargeTitles = YES;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -61,12 +64,13 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *class = self.datasource[indexPath.row][@"class"];
+    NSString *title = self.datasource[indexPath.row][@"title"];
     void(^blk)(void) = self.datasource[indexPath.row][@"block"];
     if(blk) {
         blk();
     }
     else if(class) {
-        rto_dsp([NSString stringWithFormat:@"d://push/%@", class], nil);
+        rto_dsp([NSString stringWithFormat:@"d://push/%@?%@", class, title], nil);
     }
 }
 - (UITableView *)tableView {
@@ -86,8 +90,23 @@
             @"class":@"WebViewController",
             @"subtitle":@"有进度的网页ViewController",
             @"block":^(void){
-                rto_dsp(@"d://push/WebViewController?a=1&url=https://cn.vuejs.org", nil);
+                rto_dsp(@"d://push/WebViewController?title=WebView&url=https://cn.vuejs.org", nil);
             }
+        },
+        @{
+            @"title":@"WCDB数据库",
+            @"class":@"WCDB_MainViewController",
+            @"subtitle":@"wcdb数据库"
+        },
+        @{
+            @"title":@"FMDB数据库",
+            @"class":@"FMDB_ViewController",
+            @"subtitle":@"fmdb数据库"
+        },
+        @{
+            @"title":@"弹出自动高度ViewController",
+            @"class":@"PresentHalf_ViewController",
+            @"subtitle":@"自动高度"
         }
     ];
 }

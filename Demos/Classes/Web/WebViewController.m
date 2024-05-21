@@ -22,6 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    [self secureScreenShot:YES handle:^UIImage *(UIImage *screenShotImage) {
+//        return [UIImage imageNamed:@"face5"];
+//    }];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.prefersLargeTitles = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -32,13 +36,23 @@
     
     [self.view addSubview:self.progressView];
     [self.progressView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(44);
+        make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
         make.left.right.equalTo(self.view);
-        make.height.equalTo(@2);
+        make.height.equalTo(@1);
     }];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(userDidScreenshot:)
+                                                 name:UIApplicationUserDidTakeScreenshotNotification
+                                               object:nil];
     [self requestWeb];
 }
+
+- (void)userDidScreenshot:(NSNotification *)notification {
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.image = [UIImage imageNamed:@"face5"];
+    showToastMsg(@"拷贝成功");
+}
+
 - (void)requestWeb {
     if(self.url) {
         NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];

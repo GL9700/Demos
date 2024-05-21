@@ -6,18 +6,19 @@ target 'Demos' do
 
   use_frameworks!
 
-  pod 'GLRouter'
-  pod 'Masonry'
   pod 'MJRefresh'
   pod 'SDWebImage'
   pod 'YYModel'
+  pod 'IQKeyboardManager'
+  pod 'Masonry'
   pod 'lottie-ios', '2.5.3'
-  pod 'LookinServer', :configurations => ['Debug']
-
+  pod 'GLRouter'
   pod 'GLNetworking'
   pod 'GLFrameRate'
-  pod 'GLExtensions'
-    
-  # Pods for FLIOCenter
+  pod 'GLExtensions', :path => '/Users/liguoliang/Desktop/OpenSource/GLExtensions'
+  pod 'LookinServer', :configurations => ['Debug']
+  pod 'WCDB'
+  pod 'FMDB'
 
 end
+
