@@ -31,6 +31,11 @@
     self.navigationController.navigationBar.prefersLargeTitles = YES;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"%s", __func__);
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -94,9 +99,14 @@
             }
         },
         @{
-            @"title":@"WCDB数据库",
-            @"class":@"WCDB_MainViewController",
-            @"subtitle":@"wcdb数据库"
+            @"title":@"AI : NaturalLanguage",
+            @"class":@"AI_NL_ViewController",
+            @"subtitle":@"ai 自然语言分析"
+        },
+        @{
+            @"title":@"AI : NaturalLanguage - 2",
+            @"class":@"AI_NL_2_ViewController",
+            @"subtitle":@"ai 自然语言分析 - 2"
         },
         @{
             @"title":@"FMDB数据库",
@@ -107,6 +117,16 @@
             @"title":@"弹出自动高度ViewController",
             @"class":@"PresentHalf_ViewController",
             @"subtitle":@"自动高度"
+        },
+        @{
+            @"title":@"Websocket",
+            @"class":@"WebsocketViewController",
+            @"subtitle":@"websocket"
+        },
+        @{
+            @"title":@"Server",
+            @"class":@"ServerViewController",
+            @"subtitle":@"http server for iOS"
         }
     ];
 }

@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PresentedViewController : BaseViewController
-
+@property (nonatomic) CGFloat height;
 @end
 
 NS_ASSUME_NONNULL_END

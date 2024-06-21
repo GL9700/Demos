@@ -1,11 +1,11 @@
-# Uncomment the next line to define a global platform for your project
+
+source 'http://192.168.1.59/ios/fl_repo.git'
+source 'https://cdn.cocoapods.org/'
+
 platform :ios, '12.0'
 
 target 'Demos' do
-  # Comment the next line if you don't want to use dynamic frameworks
-
   use_frameworks!
-
   pod 'MJRefresh'
   pod 'SDWebImage'
   pod 'YYModel'
@@ -15,10 +15,17 @@ target 'Demos' do
   pod 'GLRouter'
   pod 'GLNetworking'
   pod 'GLFrameRate'
-  pod 'GLExtensions', :git=>'https://github.com/GL9700/GLExtensions.git', :commit=>'77c15f1'
+#  pod 'GLExtensions', :git=>'https://github.com/GL9700/GLExtensions.git', :commit=>'559af84'
+  pod 'GLExtensions'
+  pod 'lottie-ios', '2.5.3'
   pod 'LookinServer', :configurations => ['Debug']
   pod 'WCDB'
   pod 'FMDB'
-
+  
+  pod 'SocketRocket'
+  pod "GCDWebServer"
+  
+  pod 'FLUserCenter'
+  
 end
 
